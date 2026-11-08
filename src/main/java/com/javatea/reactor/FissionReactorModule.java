@@ -70,6 +70,20 @@ public final class FissionReactorModule {
         ITEMS.register(modBus);
     }
 
+    public static final class FuelRodAssemblyBlock extends Block {
+        public static final BooleanProperty FILLED = BooleanProperty.create("filled");
+
+        public FuelRodAssemblyBlock(Properties properties) {
+            super(properties);
+            registerDefaultState(stateDefinition.any().setValue(FILLED, false));
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(FILLED);
+        }
+    }
+
     public static final class FissionControllerBlock extends Block {
         public static final BooleanProperty ENABLED = BooleanProperty.create("enabled");
         public static final BooleanProperty RUNNING = BooleanProperty.create("running");
