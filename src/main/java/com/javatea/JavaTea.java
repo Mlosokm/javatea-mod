@@ -1,5 +1,6 @@
 package com.javatea;
 
+import com.javatea.reactor.FissionReactorModule;
 import com.javatea.registry.ModBlockEntities;
 import com.javatea.registry.ModBlocks;
 import com.javatea.registry.ModCreativeTabs;
@@ -26,9 +27,9 @@ public class JavaTea {
         ModFluids.FLUIDS.register(modBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modBus);
         ModCreativeTabs.CREATIVE_TABS.register(modBus);
+        FissionReactorModule.register(modBus);
 
         MinecraftForge.EVENT_BUS.register(this);
-
         LOGGER.info("JavaTea loaded");
     }
 }
