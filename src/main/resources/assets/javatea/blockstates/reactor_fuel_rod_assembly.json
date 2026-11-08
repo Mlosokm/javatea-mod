@@ -1,1 +1,1 @@
-{"variants":{"":{"model":"javatea:block/reactor_fuel_rod_assembly"}}}
+{"variants":{"filled=false":{"model":"javatea:block/reactor_fuel_rod_assembly"},"filled=true":{"model":"javatea:block/reactor_fuel_rod_assembly_filled"}}}
