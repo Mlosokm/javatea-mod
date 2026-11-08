@@ -1,0 +1,1 @@
+{"variants":{"enabled=false,running=false":{"model":"javatea:block/reactor_controller_off"},"enabled=true,running=false":{"model":"javatea:block/reactor_controller_on"},"enabled=true,running=true":{"model":"javatea:block/reactor_controller_running"}}}
