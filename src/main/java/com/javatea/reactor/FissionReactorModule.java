@@ -1,7 +1,7 @@
 package com.javatea.reactor;
 
 import com.javatea.JavaTea;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
