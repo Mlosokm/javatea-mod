@@ -1,7 +1,11 @@
 package com.javatea.registry;
 
 import com.javatea.JavaTea;
-import com.javatea.block.*;
+import com.javatea.block.FluidPortBlock;
+import com.javatea.block.MachineBlock;
+import com.javatea.block.BoilerBlock;
+import com.javatea.block.SuperheaterBlock;
+import com.javatea.blockentity.MachineBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -29,16 +33,16 @@ public class ModBlocks {
                     .noOcclusion()));
 
     public static final RegistryObject<Block> STEAM_TANK = BLOCKS.register("steam_tank",
-            () -> new SteamTankBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(4.0f)
                     .sound(SoundType.METAL)
-                    .noOcclusion()));
+                    .noOcclusion(), MachineBlockEntities.SteamTankBlockEntity::new));
 
     public static final RegistryObject<Block> STEAM_PIPE = BLOCKS.register("steam_pipe",
-            () -> new SteamPipeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(2.0f)
                     .sound(SoundType.METAL)
-                    .noOcclusion()));
+                    .noOcclusion(), MachineBlockEntities.SteamPipeBlockEntity::new));
 
     public static final RegistryObject<Block> BOILER = BLOCKS.register("boiler",
             () -> new BoilerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
@@ -53,23 +57,23 @@ public class ModBlocks {
                     .lightLevel(state -> state.getValue(SuperheaterBlock.LIT) ? 10 : 0)));
 
     public static final RegistryObject<Block> SAFETY_VALVE = BLOCKS.register("safety_valve",
-            () -> new SafetyValveBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(3.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL), MachineBlockEntities.SafetyValveBlockEntity::new));
 
     public static final RegistryObject<Block> PRESSURE_GAUGE = BLOCKS.register("pressure_gauge",
-            () -> new PressureGaugeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(2.0f)
                     .sound(SoundType.METAL)
-                    .noOcclusion()));
+                    .noOcclusion(), MachineBlockEntities.PressureGaugeBlockEntity::new));
 
     public static final RegistryObject<Block> STEAM_ENGINE = BLOCKS.register("steam_engine",
-            () -> new SteamEngineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL), MachineBlockEntities.SteamEngineBlockEntity::new));
 
     public static final RegistryObject<Block> STEAM_TURBINE = BLOCKS.register("steam_turbine",
-            () -> new SteamTurbineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            () -> new MachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL), MachineBlockEntities.SteamTurbineBlockEntity::new));
 }

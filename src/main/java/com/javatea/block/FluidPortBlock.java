@@ -1,6 +1,6 @@
 package com.javatea.block;
 
-import com.javatea.blockentity.FluidPortBlockEntity;
+import com.javatea.blockentity.MachineBlockEntities;
 import com.javatea.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -26,12 +26,12 @@ public class FluidPortBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new FluidPortBlockEntity(pos, state);
+        return new MachineBlockEntities.FluidPortBlockEntity(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.FLUID_PORT.get(), FluidPortBlockEntity::tick);
+        return createTickerHelper(type, ModBlockEntities.FLUID_PORT.get(), MachineBlockEntities.FluidPortBlockEntity::tick);
     }
 }
