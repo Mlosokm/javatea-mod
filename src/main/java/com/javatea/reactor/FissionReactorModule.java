@@ -167,6 +167,7 @@ public final class FissionReactorModule {
 
         // Each FRA column must be continuous and have exactly one RRC directly above it.
         Set<BlockPos> expectedRrc = new HashSet<>();
+        int fraColumns = 0;
         for (int x = minX + 1; x < maxX; x++) {
             for (int z = minZ + 1; z < maxZ; z++) {
                 boolean seenFra = false;
@@ -184,6 +185,7 @@ public final class FissionReactorModule {
                     }
                 }
                 if (seenFra) {
+                    fraColumns++;
                     BlockPos cap = new BlockPos(x, topFraY + 1, z);
                     expectedRrc.add(cap);
                     if (!level.getBlockState(cap).is(REACTOR_ROD_CONTROLLER_ASSEMBLY.get())) {
@@ -192,6 +194,11 @@ public final class FissionReactorModule {
                     }
                 }
             }
+        }
+
+        if (fraColumns == 0) {
+            mark(level, new BlockPos((minX + maxX) / 2, minY + 1, (minZ + maxZ) / 2), false);
+            valid = false;
         }
 
         // RRC blocks anywhere other than the top of an FRA column are invalid.
