@@ -46,7 +46,7 @@ public final class FissionReactorModule {
     public static final RegistryObject<Block> REACTOR_CASING = block("reactor_casing",
             () -> new Block(metal(5.0F)));
     public static final RegistryObject<Block> REACTOR_FUEL_ROD_ASSEMBLY = block("reactor_fuel_rod_assembly",
-            () -> new Block(metal(4.0F)));
+            () -> new FuelRodAssemblyBlock(metal(4.0F)));
     public static final RegistryObject<Block> REACTOR_ROD_CONTROLLER_ASSEMBLY = block("reactor_rod_controller_assembly",
             () -> new Block(metal(4.0F)));
     public static final RegistryObject<Block> REACTOR_INPUT_PORT = block("reactor_input_port",
