@@ -215,12 +215,20 @@ public final class FissionReactorModule {
             }
         }
 
-        // Every FRA and its RRC cap must remain fully inside the casing.
-        for (BlockPos p : shell) {
-            if (level.getBlockState(p).is(REACTOR_FUEL_ROD_ASSEMBLY.get())
-                    || level.getBlockState(p).is(REACTOR_ROD_CONTROLLER_ASSEMBLY.get())) {
-                mark(level, p, true);
-                valid = false;
+        // FRA and RRC blocks must be strictly inside the casing boundary.
+        for (int x = minX - 1; x <= maxX + 1; x++) {
+            for (int y = minY - 1; y <= maxY + 1; y++) {
+                for (int z = minZ - 1; z <= maxZ + 1; z++) {
+                    BlockPos p = new BlockPos(x, y, z);
+                    boolean assembly = level.getBlockState(p).is(REACTOR_FUEL_ROD_ASSEMBLY.get())
+                            || level.getBlockState(p).is(REACTOR_ROD_CONTROLLER_ASSEMBLY.get());
+                    boolean strictlyInside = x > minX && x < maxX && y > minY && y < maxY
+                            && z > minZ && z < maxZ;
+                    if (assembly && !strictlyInside) {
+                        mark(level, p, true);
+                        valid = false;
+                    }
+                }
             }
         }
         return new ValidationResult(valid);
